@@ -1,0 +1,9 @@
+https://pythonmachinelearning.pro/face-recognition-with-eigenfaces/
+
+There are hundreds of people's faces you can get from sklearn.datasets, like this:
+    from sklearn.datasets import fetch_lfw_people
+    fetch_lfw_people(data_home="/home/tbrownex/data/faces", min_faces_per_person=60)
+    
+But most of those faces occur just a few times, which isn't so helpful. So I just kept the high-volume ones and deleted the others
+The tutorial has 5 classes (people) but I have I think 8 so metrics are not quite as good
+Tutorial uses an out-of-the-box neural net from sklearn. Presumably I could get better results with a custom network plus optimization

@@ -11,7 +11,7 @@ def loadFeatureVector(fileName, labels):
     # hard-coding the numpy file header size: skip the header
     return data[32:], labels
 
-def createTrainDS(dataDict, epochs, config):
+def createTrainDS(dataDict, config):
     ds = tf.data.Dataset.from_tensor_slices((dataDict["trainX"], dataDict["trainY"]))
     ds = ds.map(loadFeatureVector, num_parallel_calls=tf.data.experimental.AUTOTUNE)
     ds = ds.shuffle(buffer_size=10000, reshuffle_each_iteration=True)
@@ -23,9 +23,9 @@ def createValDS(dataDict, config):
     ds =  ds.map(loadFeatureVector, num_parallel_calls=tf.data.experimental.AUTOTUNE)
     return ds.batch(config["batchSize"])
 
-def createDataset(dataDict, epochs, config, typ):
+def createDataset(dataDict, config, typ):
     assert typ in ["train", "val"], "invalid dataset typ (train or val)"
     if typ == "train":
-        return createTrainDS(dataDict, epochs, config)
+        return createTrainDS(dataDict, config)
     else:
         return createValDS(dataDict, config)
