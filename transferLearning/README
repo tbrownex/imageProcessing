@@ -1,3 +1,5 @@
+This is Transfer Learning off of trained InceptionV3 model
+
 Images are the standard "flower_photos", downloaded and stored in GCS
 Run "copyImages" to copy from GCS to your local. Use "count" and "types" to control how many images and what types of flowers
 Then run "createBottleneck" to run each image through Inception and write out the bottleneck layer values to ".npy" files. If you already have copied images and created their bottlenecks, you can leave them alone: the process will compare lists of JPG files and .npy. It will create the .npy for any JPG files missing its .npy. So it avoids recreating an already-present .npy
